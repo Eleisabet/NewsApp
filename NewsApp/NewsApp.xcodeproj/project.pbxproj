@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F83F4BE2CE2D05C00B4DCB2 /* GeneralCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83F4BD2CE2D05C00B4DCB2 /* GeneralCollectionViewCell.swift */; };
+		1F83F4C22CE3217F00B4DCB2 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83F4C12CE3217F00B4DCB2 /* NewsViewController.swift */; };
 		1FE199342CE1DC6E001D81EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE199332CE1DC6E001D81EC /* AppDelegate.swift */; };
 		1FE199382CE1DC6E001D81EC /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE199372CE1DC6E001D81EC /* GeneralViewController.swift */; };
 		1FE1993D2CE1DC79001D81EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE1993C2CE1DC79001D81EC /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		1F83F4BD2CE2D05C00B4DCB2 /* GeneralCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCollectionViewCell.swift; sourceTree = "<group>"; };
+		1F83F4C12CE3217F00B4DCB2 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		1FE199302CE1DC6E001D81EC /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE199332CE1DC6E001D81EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FE199372CE1DC6E001D81EC /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				1F83F4BC2CE2D03C00B4DCB2 /* View */,
+				1F83F4C12CE3217F00B4DCB2 /* NewsViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				1F83F4BE2CE2D05C00B4DCB2 /* GeneralCollectionViewCell.swift in Sources */,
 				1FE199482CE1E26B001D81EC /* TabBarController.swift in Sources */,
 				1FE199382CE1DC6E001D81EC /* GeneralViewController.swift in Sources */,
+				1F83F4C22CE3217F00B4DCB2 /* NewsViewController.swift in Sources */,
 				1FE1994A2CE1E568001D81EC /* BusinessViewController.swift in Sources */,
 				1FE199342CE1DC6E001D81EC /* AppDelegate.swift in Sources */,
 			);

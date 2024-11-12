@@ -97,8 +97,13 @@ extension GeneralViewController: UICollectionViewDataSource {
     
 }
 
-// MARK: UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 extension GeneralViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Создаём экземпляр нового контроллера для перехода
+        let detailViewController = NewsViewController()
+        
+        // Переход на новый экран с использованием UINavigationController
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
-

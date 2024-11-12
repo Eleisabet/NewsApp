@@ -42,4 +42,10 @@ final class TabBarController: UITabBarController {
         
         return navigationController
     }
+    
+    private func setupTabBar() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        tabBar.tintColor = .black
+    }
 }
