@@ -14,7 +14,6 @@ class NewsViewController: UIViewController {
     
     private lazy var newsImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "image") 
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -22,7 +21,6 @@ class NewsViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sample News Title"
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -31,7 +29,6 @@ class NewsViewController: UIViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim"
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 0
         label.textColor = .darkGray
@@ -47,7 +44,18 @@ class NewsViewController: UIViewController {
         return label
     }()
     
+    // MARK: Properties
+    private let edgeInset = 10
+    private let viewModel: NewsViewModelProtocol
+    
     // MARK: - Life Cycle
+    init(viewModel: NewsViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,7 +69,18 @@ class NewsViewController: UIViewController {
         view.addSubview(newsImageView)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
-        view.addSubview(dateLabel)
+        titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
+        dateLabel.text = viewModel.date
+        
+        
+        if let image = UIImage(data: viewModel.imageData) {
+            newsImageView.image = image
+        } else {
+            newsImageView.image = UIImage(named: "image")
+        }
+        
+        setupConstraints()
     }
     
     private func setupConstraints() {
@@ -81,10 +100,5 @@ class NewsViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
-        dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
-        }
     }
 }
