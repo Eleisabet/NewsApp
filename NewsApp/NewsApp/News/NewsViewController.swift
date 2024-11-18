@@ -80,7 +80,7 @@ class NewsViewController: UIViewController {
             newsImageView.image = UIImage(named: "image")
         }
         
-        
+        setupConstraints()
     }
     
     private func setupConstraints() {

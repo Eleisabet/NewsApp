@@ -57,7 +57,6 @@ class GeneralViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         setUPConstraints()
     }
     
@@ -83,10 +82,7 @@ class GeneralViewController: UIViewController {
         view.addSubview(collectionView)
         
         collectionView.register(GeneralCollectionViewCell.self, forCellWithReuseIdentifier: "GeneralCollectionViewCell")
-        
-        
         setUPConstraints()
-        
     }
     
     private func setUPConstraints() {

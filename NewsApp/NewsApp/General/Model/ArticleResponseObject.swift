@@ -12,14 +12,12 @@ struct ArticleResponseObject: Codable {
     let description: String?
     let urlToImage: String?
     let date: String
-    
+
     enum CodingKeys: String, CodingKey {
         case title
         case description
         case urlToImage
         case date = "publishedAt"
     }
-    
+
 }
-
-

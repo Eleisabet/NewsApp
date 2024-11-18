@@ -11,12 +11,12 @@ protocol BusinessViewModelProtocol {
     var reloadData: (() -> Void)? { get set}
     var showError: ((String) -> Void)? { get set }
     var reloadCell: ((Int) -> Void)? { get set }
-    
+
     var numberOfCells: Int { get }
     func loadData()
-    
-    
-    
+
+
+
     func getArticle(for row: Int) -> ArticleCellViewModel
 }
 
@@ -24,7 +24,7 @@ final class BusinessViewModel: BusinessViewModelProtocol {
     var reloadData: (() -> Void)?
     var showError: ((String) -> Void)?
     var reloadCell: ((Int) -> Void)?
-    
+
     // MARK: Properties
     var numberOfCells: Int {
         articles.count
@@ -34,25 +34,25 @@ final class BusinessViewModel: BusinessViewModelProtocol {
             DispatchQueue.main.async {
                 self.reloadData?()
             }
-            
-            
+
+
         }
     }
-    
+
     init(loadDataOnInit: Bool = true) {
         if loadDataOnInit {
             loadData()
         }
     }
-    
-    
+
+
     func getArticle(for row: Int) -> ArticleCellViewModel {
         return articles[row]
-        
+
     }
-    
+
     func loadData() {
-        
+
         ApiManager.getNews(from: .business) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -67,15 +67,15 @@ final class BusinessViewModel: BusinessViewModelProtocol {
                 }
             }
         }
-        
+
     }
-    
+
     private func loadImage() {
         for (index, article) in articles.enumerated() {
             print("Fetching image for article at index \(index): \(article.imageUrl)")
             ApiManager.getImageData(url: article.imageUrl)
             { [weak self] result in
-                
+
                 DispatchQueue.main.async{
                     switch result {
                     case .success(let data):
@@ -87,25 +87,24 @@ final class BusinessViewModel: BusinessViewModelProtocol {
                         self?.showError?(error.localizedDescription)
                     }
                 }
-                
+
             }
         }
-        
-        
+
+
     }
-    
+
     private func convertToCellViewModel(_ articles: [ArticleResponseObject]) -> [ArticleCellViewModel] {
         print("Converting \(articles.count) articles to cell view models")
         return articles.map { ArticleCellViewModel(article: $0) }
-        
+
     }
     private func setupMockObjects() {
         articles = [
             ArticleCellViewModel(article: ArticleResponseObject(title: "First object title", description: "First object description in the mock object", urlToImage: "...", date: "25.12.2017"))
         ]
     }
-    
-    
-    
-}
 
+
+
+}
